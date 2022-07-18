@@ -3,8 +3,13 @@ node{
         git 'https://github.com/bluespringshade/collections.git'
         sh 'npm install'
         echo "Start running newman, please wait..."
-        sh 'npm run show-fact'
-        sh 'npm run show-all-facts'
-        echo "Run Newman Success"
+        try{
+            sh 'npm run show-fact'
+            sh 'npm run show-all-facts'
+            currentBuild.result = 'SUCCESS'
+            echo "Run Newman Success"
+        }catch(Exception ex){
+            currentBuild.result = 'FAILURE'
+        }
     }
 }
