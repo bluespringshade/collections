@@ -2,9 +2,6 @@
   "name": "automation-runner-1",
   "version": "1.0.0",
   "description": "Project for automation API test",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
     "show-fact": "newman run show-fact/show-fact.postman_collection.json --disable-unicode -e show-fact/show-fact.postman_environment.json --timeout-script=9999999 -d show-fact/show-fact.csv --insecure --reporters=htmlextra,cli --reporter-htmlextra-logs true --reporter-htmlextra-export=- > output.txt",
     "show-all-facts" : "newman run show-all-fact/show-all-facts.postman_collection.json --disable-unicode -e show-all-fact/show-all-facts.postman_environment.json --timeout-script=9999999 -d show-all-fact/show-all-facts.csv --insecure --reporters=htmlextra,cli --reporter-htmlextra-logs true --reporter-htmlextra-export=- > output.txt"
