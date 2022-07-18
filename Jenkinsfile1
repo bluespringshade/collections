@@ -1,0 +1,10 @@
+node{
+    stage("Run Automation"){
+        git 'https://github.com/bluespringshade/collections.git'
+        sh 'npm install'
+        echo "Start running newman, please wait..."
+        sh 'npm run show-fact'
+        sh 'npm run show-all-facts'
+        echo "Run Newman Success"
+    }
+}
