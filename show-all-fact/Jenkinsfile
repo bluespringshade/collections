@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages{
+        stage('Run Automation') {
+            steps {
+                echo "Start running newman, please wait..."
+                bat 'newman run "show-all-fact/show-fact.postman_collection.json" --disable-unicode  -e "show-all-fact/show-fact.postman_environment.json" --timeout-script=9999999 -d "show-all-fact/show-fact.csv" --insecure --reporters=htmlextra,cli --reporter-htmlextra-logs true --reporter-htmlextra-export=- > output.txt'
+                echo "Run Newman Success"
+            }
+        }
+    }
+}
