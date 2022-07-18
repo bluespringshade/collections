@@ -1,14 +1,17 @@
-// Using git without checkout
 pipeline {
-  agent any
-  parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
-  }
-  stages {
-    stage('Init') {
-      steps {
-        git branch: "${params.BRANCH}", url: 'https://github.com/bluespringshade/automation-runner.git'
-      }
+    agent { label 'LinuxSlave' }
+    stages {
+        stage ('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Test'){
+            steps {
+                sh 'npm install'
+                sh 'npm run newman-tests'
+                junit 'newman.xml'
+            }
+        }
     }
-  }
 }
