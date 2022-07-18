@@ -4,7 +4,8 @@ pipeline {
         stage('Run Automation') {
             steps {
                 echo "Start running newman, please wait..."
-                bat 'newman run "show-all-fact/show-fact.postman_collection.json" --disable-unicode  -e "show-all-fact/show-fact.postman_environment.json" --timeout-script=9999999 -d "show-all-fact/show-fact.csv" --insecure --reporters=htmlextra,cli --reporter-htmlextra-logs true --reporter-htmlextra-export=- > output.txt'
+                bat 'newman run "show-all-fact/show-fact.postman_collection.json" --disable-unicode  -e "show-all-fact/show-fact.postman_environment.json" --timeout-script=9999999 -d "show-all-fact/show-fact.csv" --insecure -r junit,html --reporter-junit-export newman/junit/newman.xml --reporter-html-export newman/html/index.html'
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'newman/html', reportFiles: 'index.html', reportName: 'show-fact testing', reportTitles: ''])
                 echo "Run Newman Success"
             }
         }
