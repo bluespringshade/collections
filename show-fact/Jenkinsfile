@@ -1,14 +1,13 @@
-// Using git without checkout
 pipeline {
-  agent any
-  parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
-  }
-  stages {
-    stage('Init') {
-      steps {
-        git branch: "${params.BRANCH}", url: 'https://github.com/bluespringshade/automation-runner.git'
-      }
+    agent any
+    stages{
+        stage('Run Automation') {
+            steps {
+                echo "Start running newman, please wait..."
+                bat 'newman run "show-fact/show-fact.postman_collection.json" --disable-unicode  -e "show-fact/show-fact.postman_environment.json" --timeout-script=9999999 -d "show-fact/show-fact.csv" --insecure --reporters=htmlextra,cli --reporter-htmlextra-logs true --reporter-htmlextra-export=- > output.txt'
+//                 publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'newman/html', reportFiles: 'index.html', reportName: 'show-fact testing', reportTitles: ''])
+                echo "Run Newman Success"
+            }
+        }
     }
-  }
 }
