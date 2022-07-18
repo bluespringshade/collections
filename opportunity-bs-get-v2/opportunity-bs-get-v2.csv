@@ -1,0 +1,14 @@
+no,transaction_id,remarks,scenario_type,enable_csv,subscriber_mode,is_json,stub_subsprof,whitelist_location,whitelist_msisdn,whitelist_imei,scv_multidim,counter,is_json.1,1_expected_http_code_old,1_expected_http_code_new,1_expected_content_type_old,1_expected_content_type_new,1_expected_status_code,1_global_ignore,1_ignore_value,1_field_decimal_as_integer,1_ignore_if_not_found,1_ignore_single_tc,1_ignore_value_single_tc,1_separation_query_params,1_transaction_id,1_channel,1_user_id,1_opportunity_id,1_end_separation_query_params
+1,TC0001,-,Positive,YES,,YES,[],[],[],[],[],[],YES,200,200,,,,/transaction/transaction_id|/opportunity/customer_account/contact/contact_name,,,,,,#,#####,k4,user01,1-TAJ1Y9,#
+2,TC0002,-,Negative,YES,,YES,,,,,,,YES,400,400,,,,,,,,,,,,,user02,1-TAJ1Y9,
+3,TC0003,-,Negative,YES,,YES,,,,,,,YES,400,400,,,,,,,,,,,,k4,,1-TAJ1Y9,
+4,TC0004,-,Negative,YES,,YES,,,,,,,YES,400,400,,,,,,,,,,,,k4,user04,,
+5,TC0005,-,Negative,YES,,NO,,,,,,,NO,400,400,,,,,,,,,,,,SKIP,user01,1-TAJ1Y9,
+6,TC0006,-,Negative,YES,,YES,,,,,,,YES,400,400,,,,,,,,,,,,k4,SKIP,1-TAJ1Y9,
+7,TC0007,-,Negative,YES,,YES,,,,,,,YES,400,400,,,,,,,,,,,,k4,user01,SKIP,
+8,TC0008,-,Negative,YES,,YES,,,,,,,YES,400,400,,,,,,,,,,,,#NULL,user01,1-TAJ1Y9,
+9,TC0009,-,Positive,YES,,YES,,,,,,,YES,200,200,,,,,,,,,,,,k4,#NULL,1-TAJ1Y9,
+10,TC0010,-,Negative,YES,,YES,,,,,,,YES,400,400,,,,,,,,,,,,k4,user03,#NULL,
+11,TC0011,-,Negative,YES,,YES,,,,,,,YES,400,400,,,,,,,,,,,,k4,user01,1-OPT-123,
+12,TC0012,-,Positive,YES,,YES,[],[],[],[],[],[],YES,200,200,,,,/transaction/transaction_id|/opportunity/*/customer_account/contact/contact_name,,,,,,#,#####,k4,user01,1-F8G4R2Q,#
+13,TC0013,-,Positive,YES,,YES,[],[],[],[],[],[],YES,200,200,,,,/transaction/transaction_id|/opportunity/*/customer_account/contact/contact_name,,,,,,#,#####,k4,user01,1-4CBKY8J,#
