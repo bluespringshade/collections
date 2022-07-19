@@ -3,8 +3,8 @@ pipeline {
     stages{
         stage ('Build Application') {
             steps {
-              sh 'npm i'
-              sh 'npm run build'
+              bat 'npm i'
+              bat 'npm run build'
             }
         }
         stage('Run Automation') {
