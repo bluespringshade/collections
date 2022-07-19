@@ -4,7 +4,7 @@ pipeline {
         stage ('Build Application') {
             steps {
               bat 'npm i'
-              bat 'npm run build'
+//               bat 'npm run build'
             }
         }
         stage('Run Automation') {
